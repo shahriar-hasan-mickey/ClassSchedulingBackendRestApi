@@ -16,6 +16,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+
+@CrossOrigin(origins = "*")
+//TODO : https://www.youtube.com/watch?v=PcZGwcgbzE4
 @RestController
 //@GetMapping("/ClassScheduling")
 public class StudentController {
@@ -28,8 +31,10 @@ public class StudentController {
 //    List<Integer> SECTION_MAX_LIMIT = new ArrayList<Integer>();
     private final BusinessLogic businessLogic = new BusinessLogic();
 
+
     @PostMapping("/Class_Enrollment")
     Object newStudent(@RequestBody Student newStudent){
+//        return newStudent;
         List<Student> studentFinder = studentsRepository.findBySID(newStudent.getSid());
         List<Student> list_of_all_students_in_the_section = getAllStudentBySection(newStudent.getSection());
         List<Section>  SECTION_MAX_LIMIT = sectionRepository.findAll();
